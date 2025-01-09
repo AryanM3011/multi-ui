@@ -34,6 +34,7 @@ public enum Terrain {
         {1,     1,    1,    1,      1,      1,      1,      1, 1, 1, 0}  // BRICK
     };
 
+    
     private Terrain(int wallsMin, int wallsMax, int visibility, int maxConnect, char symbol){
         this.wallsMin = wallsMin;
         this.wallsMax = wallsMax;
