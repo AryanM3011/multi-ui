@@ -2,6 +2,59 @@ package edu.bothell.multi_ui.core;
 
 import java.util.ArrayList;
 
+public class Game {
+    private final int MAX_PLAYERS = 2;
+    private final ArrayList<Player> players;
+    private final State state;
+    private int turn;
+    private Player active;
+
+    public Game() {
+        this.turn = 0;
+        this.state = new State(3, 3); // 3x3 grid for tic-tac-toe
+        this.players = new ArrayList<>();
+    }
+
+    public Player addPlayer(Player player) {
+        if (players.size() < MAX_PLAYERS) {
+            players.add(player);
+            return player;
+        }
+        return null;
+    }
+
+    public boolean playMove(int row, int col) {
+        if (state.isValidMove(row, col)) {
+            state.makeMove(row, col, active.getChar());
+            if (state.checkWin(active.getChar())) {
+                System.out.println("Player " + active.getChar() + " wins!");
+                return true;
+            }
+            nextTurn();
+        }
+        return false;
+    }
+
+    private void nextTurn() {
+        turn = (turn + 1) % players.size();
+        active = players.get(turn);
+    }
+
+    public void start() {
+        if (players.size() == MAX_PLAYERS) {
+            active = players.get(0);
+        } else {
+            System.out.println("Not enough players to start.");
+        }
+    }
+}
+
+
+
+/*package edu.bothell.multi_ui.core;
+
+import java.util.ArrayList;
+
 
 public class Game {
     private final int                  MAX_PLAYERS = 3;
@@ -81,3 +134,4 @@ public class Game {
 
 
 }
+*/
