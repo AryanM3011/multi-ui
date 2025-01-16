@@ -29,7 +29,7 @@ public class Control {
     }
 
     public State getState(){
-        return this.g.getState();
+        return g.getState();
     }
 
     // pos[0] is X

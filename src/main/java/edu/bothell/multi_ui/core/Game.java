@@ -1,4 +1,4 @@
-package edu.bothell.multi_ui.core;
+/* package edu.bothell.multi_ui.core;
 
 import java.util.ArrayList;
 
@@ -9,7 +9,7 @@ public class Game {
     private int turn;
     private Player active;
 
-    public Game() {
+    public Game(Control control) {
         this.turn = 0;
         this.state = new State(3, 3); // 3x3 grid for tic-tac-toe
         this.players = new ArrayList<>();
@@ -27,7 +27,7 @@ public class Game {
         if (state.isValidMove(row, col)) {
             state.makeMove(row, col, active.getChar());
             if (state.checkWin(active.getChar())) {
-                System.out.println("Player " + active.getChar() + " wins!");
+                System.out.println("Player " + active.getChar() + " wins");
                 return true;
             }
             nextTurn();
@@ -40,6 +40,8 @@ public class Game {
         active = players.get(turn);
     }
 
+
+
     public void start() {
         if (players.size() == MAX_PLAYERS) {
             active = players.get(0);
@@ -49,9 +51,9 @@ public class Game {
     }
 }
 
+ */
 
-
-/*package edu.bothell.multi_ui.core;
+package edu.bothell.multi_ui.core;
 
 import java.util.ArrayList;
 
@@ -92,6 +94,9 @@ public class Game {
     
     public boolean isValid(int[] pos, String sId){
         System.out.println("isVAlid?"+s.getIt(pos)+"|" + sId+"|" + active.getSId()+"|");
+        if (pos[0] >= 3 && pos[1] >= 3){
+            return false;
+        } 
         return s.isOpen(pos) && active.getSId().equals(sId);
     }
 
@@ -134,4 +139,3 @@ public class Game {
 
 
 }
-*/
